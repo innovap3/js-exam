@@ -42,3 +42,33 @@ install `node.js`
 ### Versioning
 
 v0.1.0
+
+---
+
+# Amplify Setup
+
+### Prerequisite
+* Node.js version >= 10.x and npm version >= 6.x
+
+### Step 1. Install Amplify-cli
+
+1. Run the command `npm -i -g @aws-amplify/cli@4.13.1` 
+2. Run the command `amplify` and make sure it will show usage information
+
+### Step 2. Setup Local Config
+
+**Amplify will scan your user directory and check `.aws` folder for authentication.**
+
+1. Kindly ask your team member for `.aws` credential info
+2. Put whole folder into user directory (`echo $HOME` will display actual path)
+
+### Step 3. Init project
+
+1. Go into the project directory `cd /path/to/js-exam`
+2. Run the cammand `amplify init` and finish few prompt question as below
+	* **? Do you want to use an existing environment?** `Yes`
+	* **? Choose the environment you would like to use:** `dev`
+	* **? Choose your default editor:** `(select yours)`
+	* **? Do you want to use an AWS profile?** `Yes`
+	* **? Please choose the profile you want to use** `amplify-user`
+3. If success you'll see the follow message: `Your project has been successfully initialized and connected to the cloud!` :tada::tada::tada:
