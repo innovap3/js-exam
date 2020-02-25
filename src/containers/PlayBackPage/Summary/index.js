@@ -24,13 +24,13 @@ const SummaryList = ({ data }) => (
         <Row type="flex" align="middle">
           <Col span={6}>Code Quality</Col>
           <Col span={18}>
-            <Rate disabled tooltips={rateDesc} value={item.rate.quality} />
+            <Rate disabled tooltips={rateDesc} value={item.quality} />
           </Col>
         </Row>
         <Row type="flex" align="middle">
           <Col span={6}>Completeness</Col>
           <Col span={18}>
-            <Rate disabled tooltips={rateDesc} value={item.rate.completeness} />
+            <Rate disabled tooltips={rateDesc} value={item.completeness} />
           </Col>
         </Row>
         <Row type="flex" align="middle">
@@ -41,7 +41,7 @@ const SummaryList = ({ data }) => (
               style={{ color: 'grey' }}
               disabled
               tooltips={hintDesc}
-              value={item.rate.hint}
+              value={item.hint}
             />
           </Col>
         </Row>

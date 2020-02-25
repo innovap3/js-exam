@@ -76,12 +76,14 @@ enum Reviewer {
 }
 
 type Comment @model {
+  id: ID!
   author: String
   time: AWSDateTime
   content: String
   hint: Int!
   quality: Int!
   completeness: Int!
+  tags: [String]
   record: Record @connection(name: "RecordComments")
 }
 

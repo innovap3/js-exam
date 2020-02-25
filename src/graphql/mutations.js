@@ -1611,6 +1611,9 @@ export const createComment = /* GraphQL */ `
     createComment(input: $input, condition: $condition) {
       author
       time
+      quality
+      hint
+      completeness
       content
       record {
         id

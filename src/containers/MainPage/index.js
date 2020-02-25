@@ -93,6 +93,7 @@ class MainPage extends Component {
             query={graphqlOperation(listRooms, { limit: 1000 })}
             subscription={graphqlOperation(onCreateRoom)}
             onSubscriptionMsg={(prev, { onCreateRoom: createdRoom }) => {
+              if (prev.listRooms.items.length == 0) return prev;
               if (prev.listRooms.items[0].id === createdRoom.id) return prev;
               prev.listRooms.items.unshift(createdRoom);
               return prev;
