@@ -94,8 +94,8 @@ class TestList extends React.Component {
               );
             }
             if (atLeastOneEndRecord) {
-              //here we still need the atleastoneendrecord to check if the
-              //test is still going on
+              // here we still need the atleastoneendrecord to check if the
+              // test is still going on
               actions.push(
                 <Button
                   type="link"
@@ -104,7 +104,7 @@ class TestList extends React.Component {
                   candidate={item.subjectId}
                   testid={item.id}
                 >
-                  Open Summary
+                  Summary
                 </Button>,
                 <Link to={{ pathname: `/admin/playback/${item.id}` }}>
                   <Button type="link" icon="play-square">
