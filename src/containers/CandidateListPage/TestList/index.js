@@ -104,7 +104,7 @@ class TestList extends React.Component {
                   candidate={item.subjectId}
                   testid={item.id}
                 >
-                  Open Summary
+                  Summary
                 </Button>,
                 <Link to={{ pathname: `/admin/playback/${item.id}` }}>
                   <Button type="link" icon="play-square">

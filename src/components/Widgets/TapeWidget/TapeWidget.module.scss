@@ -38,8 +38,8 @@
   > .expected {
     padding-left: 1em;
     font-style: italic;
-    max-width: 25em;
-    overflow: hidden;
+    max-width: 80em;
+    overflow: unhidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     display: inline-block;
