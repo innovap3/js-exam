@@ -247,33 +247,29 @@ class Page extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    question: state.question,
-  };
-};
+const mapStateToProps = state => ({
+  question: state.question,
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    actions: {
-      createQuestionAction: async type => {
-        await dispatch(createQuestionAction(type));
-      },
-      updateQuestionAction: async data => {
-        await dispatch(updateQuestionAction(data));
-      },
-      deleteQuestionAction: async type => {
-        await dispatch(deleteQuestionAction(type));
-      },
-      fetchQuestion: async id => {
-        await dispatch(fetchQuestion(id));
-      },
-      fetchQuestionList: async type => {
-        await dispatch(fetchQuestionList(type));
-      },
+const mapDispatchToProps = dispatch => ({
+  actions: {
+    createQuestionAction: async type => {
+      await dispatch(createQuestionAction(type));
     },
-  };
-};
+    updateQuestionAction: async data => {
+      await dispatch(updateQuestionAction(data));
+    },
+    deleteQuestionAction: async type => {
+      await dispatch(deleteQuestionAction(type));
+    },
+    fetchQuestion: async id => {
+      await dispatch(fetchQuestion(id));
+    },
+    fetchQuestionList: async type => {
+      await dispatch(fetchQuestionList(type));
+    },
+  },
+});
 
 Page.propTypes = {
   currentTab: PropTypes.string,

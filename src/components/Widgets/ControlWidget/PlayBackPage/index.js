@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PageControlBar from 'components/PageControlBar';
 import RecordSelector from 'components/Selectors/RecordSelector';
-import { Button, Icon, Input } from 'antd';
+import { Icon, Input } from 'antd';
 import { formatTime } from 'utils/format';
 import styles from './ControlWidget.module.scss';
 
@@ -35,8 +35,6 @@ const ControlWidget = ({
         />
       </InputGroup>
     </div>
-
-    <div></div>
   </PageControlBar>
 );
 

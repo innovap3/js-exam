@@ -11,7 +11,6 @@ import {
   subscribeOnUpdateRecordByRecordId,
   RECORD_STATUS,
 } from 'utils/record';
-import User from 'utils/user';
 
 import { getRoomInfo, deleteRoomAction, setRoomHost } from 'redux/room/actions';
 import { fetchQuestionList, fetchQuestion } from 'redux/question/actions';
@@ -93,15 +92,16 @@ class Page extends Component {
       message.error('delete room failed');
     }
   }
-  //this maybe helpful for subscribe the new record
-  //the this.subscription create a promise
+
+  // this maybe helpful for subscribe the new record
+  // the this.subscription create a promise
   subscribeOnCreateHistory = () => {
     if (!this.subscription) {
       this.subscription = API.graphql(
         graphqlOperation(subscriptions.onCreateHistory),
       ).subscribe({
         next: ({ value }) => {
-          //this means after subscribe what to do
+          // this means after subscribe what to do
           const onCreateHistory = value.data.onCreateHistory;
           const { record, actions } = this.props;
           if (onCreateHistory.record.id === record.id) {
@@ -290,10 +290,11 @@ class Page extends Component {
       }
     });
   };
-  //hook to the record
+
+  // hook to the record
   subscribeRecordUpdate = () => {
     this.subscriptionForUpdateRecordByRecordId = subscribeOnUpdateRecordByRecordId(
-      this.props.record.id, //here is the callback
+      this.props.record.id, // here is the callback
       data => {
         const { room, syncCode } = data;
         if (room.id === this.props.room.id) {

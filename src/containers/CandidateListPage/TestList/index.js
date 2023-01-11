@@ -94,8 +94,8 @@ class TestList extends React.Component {
               );
             }
             if (atLeastOneEndRecord) {
-              //here we still need the atleastoneendrecord to check if the
-              //test is still going on
+              // here we still need the atleastoneendrecord to check if the
+              // test is still going on
               actions.push(
                 <Button
                   type="link"
@@ -147,7 +147,7 @@ class TestList extends React.Component {
           footer={null}
           width={1000}
           currentuser={jeUser}
-        ></InterviewSummaryModal>
+        />
 
         <Modal
           title=""

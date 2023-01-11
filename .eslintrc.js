@@ -34,13 +34,6 @@ module.exports = {
     'import/no-named-as-default': 0,
     'import/no-unresolved': 2,
     'import/prefer-default-export': 0,
-    indent: [
-      2,
-      2,
-      {
-        SwitchCase: 1,
-      },
-    ],
     'jsx-a11y/aria-props': 2,
     'jsx-a11y/heading-has-content': 0,
     'jsx-a11y/label-has-associated-control': [
@@ -64,7 +57,7 @@ module.exports = {
     'no-use-before-define': 0,
     'prefer-template': 2,
     'react/destructuring-assignment': 0,
-    'react/jsx-closing-tag-location': 0,
+    'react/jsx-closing-tag-location': 2,
     'react/forbid-prop-types': 0,
     'react/jsx-first-prop-new-line': [2, 'multiline'],
     'react/jsx-filename-extension': 0,
@@ -72,7 +65,7 @@ module.exports = {
     'react/jsx-uses-vars': 2,
     'react/require-default-props': 0,
     'react/require-extension': 0,
-    'react/self-closing-comp': 0,
+    'react/self-closing-comp': 2,
     'react/sort-comp': 0,
     'require-yield': 0,
     'linebreak-style': 0,

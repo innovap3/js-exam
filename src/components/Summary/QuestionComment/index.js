@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Rate, Icon, Divider, Typography, Comment } from 'antd';
-import { Connect } from 'aws-amplify-react';
-import { API, graphqlOperation } from 'aws-amplify';
-import { onCreateComment } from 'graphql/subscriptions';
+import { Row, Col, Rate, Divider, Comment } from 'antd';
 
 class QuestionComment extends React.Component {
   render() {
@@ -16,8 +13,8 @@ class QuestionComment extends React.Component {
     return (
       <>
         <h2>Interviewer：{interviewer}</h2>
-        {questions.map(ques => {
-          return (
+        {questions.map(
+          ques => (
             <Row key={ques.id} type="flex" align="middle">
               <Col>
                 <Row>
@@ -66,9 +63,9 @@ class QuestionComment extends React.Component {
                 </Col>
               </>
             </Row>
-          );
+          ),
           // the if statement
-        })}
+        )}
         <Divider dashed />
       </>
     );

@@ -17,6 +17,7 @@ class NotFoundPage extends Component {
       .catch(err => console.log(err));
     this.props.onClearUser();
   };
+
   render() {
     return (
       <div className={styles.container}>

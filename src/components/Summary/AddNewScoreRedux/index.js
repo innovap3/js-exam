@@ -1,6 +1,6 @@
 import React from 'react';
 import { Rate, Row, Col, Input, Button, message, Form } from 'antd';
-import { reduxForm, Field, getFormValues, initialize, reset } from 'redux-form';
+import { reduxForm, Field, getFormValues } from 'redux-form';
 import createComment from 'utils/comment/comment';
 import { connect } from 'react-redux';
 const { TextArea } = Input;
@@ -56,7 +56,7 @@ const FieldizeComment = (height, width) => ({
           width: widthPx,
           overflowY: 'auto',
         }}
-      ></TextArea>
+      />
     </FormItem>
   );
 };
@@ -89,14 +89,14 @@ const FieldizeInput = (height, width) => ({
           width: widthPx,
           overflowY: 'auto',
         }}
-      ></Input>
+      />
     </FormItem>
   );
 };
 const RateScore = FieldizeRate();
 const CommentScore = FieldizeComment(200, 400);
 const NameScore = FieldizeInput(40, 200);
-//Reference: https://codesandbox.io/s/jzyl70wpk?file=/SimpleForm.js:611-1048
+// Reference: https://codesandbox.io/s/jzyl70wpk?file=/SimpleForm.js:611-1048
 
 class AddNewScoreFormRedux extends React.Component {
   constructor(props) {
@@ -122,6 +122,7 @@ class AddNewScoreFormRedux extends React.Component {
       this.submitForm();
     };
   }
+
   handleSubmit = event => {
     event.preventDefault();
     this.submitForm();

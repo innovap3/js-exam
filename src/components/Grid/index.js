@@ -30,14 +30,12 @@ export default class Grid extends React.Component {
       .map(column => column.sort((a, b) => a.y - b.y));
 
     this.state = {
-      data: this.columns.map(column => {
-        return column.map(item => {
-          return {
-            width: item.width,
-            height: item.height,
-          };
-        });
-      }),
+      data: this.columns.map(column =>
+        column.map(item => ({
+          width: item.width,
+          height: item.height,
+        })),
+      ),
     };
   }
 
@@ -66,8 +64,8 @@ export default class Grid extends React.Component {
       clientHeight: totalHeight,
     } = this.ref.current;
     const { data } = this.state;
-    const newData = data.map((column, indexOfColumn) => {
-      return column.map((item, indexOfItem) => {
+    const newData = data.map((column, indexOfColumn) =>
+      column.map((item, indexOfItem) => {
         const sumOfWidth = data
           .slice(0, -1)
           .map(c => c[0] || { width: 0 })
@@ -87,8 +85,8 @@ export default class Grid extends React.Component {
               ? totalHeight - sumOfHeight
               : item.height,
         };
-      });
-    });
+      }),
+    );
     this.setState({ data: newData });
   };
 
@@ -100,18 +98,14 @@ export default class Grid extends React.Component {
     const { data } = this.state;
     const newData = [...data];
     if (width !== newData[indexOfColumn][0].width) {
-      newData[indexOfColumn] = newData[indexOfColumn].map(item => {
-        return {
-          ...item,
-          width,
-        };
-      });
-      newData[newData.length - 1] = newData[newData.length - 1].map(item => {
-        return {
-          ...item,
-          width: totalWidth - width,
-        };
-      });
+      newData[indexOfColumn] = newData[indexOfColumn].map(item => ({
+        ...item,
+        width,
+      }));
+      newData[newData.length - 1] = newData[newData.length - 1].map(item => ({
+        ...item,
+        width: totalWidth - width,
+      }));
     } else if (
       height !== undefined &&
       indexOfColumn !== undefined &&

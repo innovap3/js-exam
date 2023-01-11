@@ -4,14 +4,14 @@ import { reset } from 'redux-form';
 import { Typography, Modal, Row, Col, Table } from 'antd';
 import PropTypes from 'prop-types';
 import { Connect } from 'aws-amplify-react';
-import { API, graphqlOperation } from 'aws-amplify';
+import { graphqlOperation } from 'aws-amplify';
 import PageEmpty from 'components/PageEmpty';
 import PageSpin from 'components/PageSpin';
 import QuestionComment from 'components/Summary/QuestionComment';
-import { onCreateResult, onCreateComment } from 'graphql/subscriptions';
-import { getTest2 } from './queries';
+import { onCreateComment } from 'graphql/subscriptions';
 import AddNewScoreRedux from 'components/Summary/AddNewScoreRedux';
 import moment from 'moment-timezone';
+import { getTest2 } from './queries';
 
 const toInterviewResult = data => {
   const interviewers = data.users.items.filter(x => x).map(v => v.user);
@@ -33,15 +33,8 @@ const toInterviewResult = data => {
   return { interviewers, questions, comments, summaries };
 };
 
-const handleSummarySubscription = (prev, { onCreateResult: newResult }) => {
-  if (!prev.getTest.results.items) {
-    prev.getTest.results.items = [];
-  }
-  prev.getTest.results.items.push(newResult);
-  return prev;
-};
 const handleScoreSubscription = (prev, { onCreateComment: newComment }) => {
-  const new_data = {
+  const newData = {
     author: newComment.author,
     completeness: newComment.completeness,
     content: newComment.content,
@@ -49,7 +42,7 @@ const handleScoreSubscription = (prev, { onCreateComment: newComment }) => {
     quality: newComment.quality,
     time: newComment.time,
   };
-  prev.getTest.records.items[0].comment.items.push(new_data);
+  prev.getTest.records.items[0].comment.items.push(newData);
   return prev;
 };
 const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -92,32 +85,28 @@ const InterviewSummaryModal = props => (
     >
       {({ data, loading, error }) => {
         const test = data && data.getTest;
-        let interviewers = [];
         let questions = [];
         let comments = [];
-        let summaries = [];
         let records = [];
         let questionid = '';
         if (data && !loading && !error) {
           const interviewResult = toInterviewResult(test);
-          interviewers = interviewResult.interviewers;
           questions = interviewResult.questions;
           comments = interviewResult.comments;
-          summaries = interviewResult.summaries;
           records = data.getTest.records.items;
           questionid = data.getTest.records.items[0].id;
           comments.sort((a, b) => a.time.localeCompare(b.time));
         }
-        let new_score = '';
+        let newScore = '';
 
-        new_score = (
+        newScore = (
           <AddNewScoreRedux
             questionid={questionid}
             uppervisible={props.visible}
-          ></AddNewScoreRedux>
+          />
         );
 
-        ////////////////////////////data part//////////////////
+        // data part
         return (
           <PageSpin spinning={loading}>
             {!loading && error && (
@@ -147,34 +136,34 @@ const InterviewSummaryModal = props => (
 
                   return questioncomment;
                 })}
-                <br></br>
-                {new_score}
-                <br></br>
+                <br />
+                {newScore}
+                <br />
                 <Typography.Title level={4}>Comments</Typography.Title>
                 <Row type="flex" justify="space-around">
                   {records.map(record => {
-                    const single_question = record.ques;
-                    const wrap_data = record.history.items
+                    const singleQuestion = record.ques;
+                    const wrapData = record.history.items
                       .map(x => x.snapComments)
                       .map(y => y.items)
                       .flat()
                       .map(z => ({
-                        Author: z.author, //2013-11-18T08:55:00-08:00
+                        Author: z.author, // 2013-11-18T08:55:00-08:00
                         Content: z.content,
                         Time: moment.tz(z.time, timezone).format('HH:mm'),
                       }))
                       .sort((a, b) => a.Time.localeCompare(b.Time));
                     return (
-                      <Col key={single_question.id} span={10}>
+                      <Col key={singleQuestion.id} span={10}>
                         <Row type="flex" align="middle" justify="space-around">
                           <h3 style={{ marginTop: '50px' }}>
-                            Questions：{single_question.name}
+                            Questions：{singleQuestion.name}
                           </h3>
                         </Row>
                         <Row>
                           <Table
                             width={40}
-                            dataSource={wrap_data}
+                            dataSource={wrapData}
                             columns={columns}
                             pagination={false}
                             style={{ height: '300px', overflowY: 'auto' }}
