@@ -33,6 +33,7 @@ import styles from './ExamPage.module.scss';
 import { EXAM_USER_NAME, QUESTION_TYPE } from './constants';
 import { createSnapComment } from '../../redux/snapComment/actions';
 import { updateRoomSyncCode } from '../../redux/room/actions';
+import loopControl from '../../utils/loopControl';
 
 const GetPageComponent = args => {
   switch (args.categoryIndex) {
@@ -160,7 +161,7 @@ class ExamPage extends Component {
           ['stage-2', { decoratorsBeforeExport: true }],
           'react',
         ],
-        plugins: ['proposal-object-rest-spread'],
+        plugins: ['proposal-object-rest-spread', loopControl],
       });
       this.props.actions.changeCode({ compiledCode });
     } catch (e) {

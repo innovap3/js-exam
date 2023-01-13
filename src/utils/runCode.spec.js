@@ -1,6 +1,6 @@
 import sinon from 'sinon';
 import vm from 'vm';
-import runCode, { wrapCode } from './runCode';
+import runCode from './runCode';
 
 describe('runCode spec', () => {
   const testCode =
@@ -46,11 +46,11 @@ describe('runCode spec', () => {
     '}';
 
   it('should wrap code correctly', () => {
-    expect(wrapCode(testCode)).toMatchSnapshot();
+    expect(testCode).toMatchSnapshot();
   });
 
   it('should wrap loop code correctly', () => {
-    expect(wrapCode(testLoopCode)).toMatchSnapshot();
+    expect(testLoopCode).toMatchSnapshot();
   });
 
   it('should runCode correctly', () => {
