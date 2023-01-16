@@ -6,20 +6,6 @@ import vm from 'vm';
 import spy from './spy';
 import getPatchedTape from './tape';
 
-export const wrapCode = (code = '') => {
-  return code.replace(/for *\(.*\{|while *\(.*\{|do *\{/g, loopHead => {
-    return `let __jsExamCount__ = 0;
-      const __jsExamDetector__ = (c) => {
-        if (c > 100000) {
-          throw new Error('infinite');
-        }
-      }
-      ${loopHead}
-      __jsExamDetector__(__jsExamCount__++);
-    `;
-  });
-};
-
 const runCode = ({ code, wrappedConsole = console, onTapeUpdate }) => {
   let script = null;
   let context = null;
@@ -44,12 +30,12 @@ const runCode = ({ code, wrappedConsole = console, onTapeUpdate }) => {
     renderToString,
   };
   try {
-    script = new vm.Script(wrapCode(code));
+    script = new vm.Script(code);
     // eslint-disable-next-line
     context = new vm.createContext(sandbox);
     script.runInContext(context);
   } catch (e) {
-    script = new vm.Script(wrapCode(''));
+    script = new vm.Script('');
     // eslint-disable-next-line
     context = new vm.createContext(sandbox);
     script.runInContext(context);

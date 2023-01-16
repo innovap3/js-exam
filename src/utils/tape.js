@@ -1,3 +1,4 @@
+/* eslint-disable guard-for-in */
 import { createHarness } from 'tape';
 
 const tryCatchPatch = t => (description, testBlock) => {
@@ -15,7 +16,8 @@ const combinePatch = (tape, patches) => (...args) => {
     throw new Error('should provide callback');
   }
   tape(...args.slice(0, -1), t => {
-    for (let key in patches) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key in patches) {
       t[key] = patches[key](t);
     }
     try {

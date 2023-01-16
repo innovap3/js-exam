@@ -53,8 +53,8 @@ const endRecord = async id => {
   return result;
 };
 
-const subscribeOnCreateRecord = callback => {
-  return API.graphql(graphqlOperation(subscriptions.onCreateRecord)).subscribe({
+const subscribeOnCreateRecord = callback =>
+  API.graphql(graphqlOperation(subscriptions.onCreateRecord)).subscribe({
     next: ({ value }) => {
       callback(value.data.onCreateRecord);
     },
@@ -62,10 +62,9 @@ const subscribeOnCreateRecord = callback => {
       console.error(error);
     },
   });
-};
 
-const subscribeOnUpdateRecordByRecordId = (id, callback) => {
-  return API.graphql(
+const subscribeOnUpdateRecordByRecordId = (id, callback) =>
+  API.graphql(
     graphqlOperation(subscriptions.onUpdateRecordByRecordId, { id }),
   ).subscribe({
     next: ({ value }) => {
@@ -75,7 +74,6 @@ const subscribeOnUpdateRecordByRecordId = (id, callback) => {
       console.error(error);
     },
   });
-};
 
 export {
   RECORD_STATUS,

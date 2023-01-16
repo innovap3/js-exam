@@ -3,7 +3,7 @@ const spy = (obj, methodName) => {
   const callHistory = [];
   const calledWith = {};
 
-  const secret = Math.random().toFixed(4) + '';
+  const secret = `${Math.random().toFixed(4)}`;
   obj[methodName] = (...args) => {
     const result = origFn.apply(obj, args);
     callHistory.push(args);
