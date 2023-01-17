@@ -11,6 +11,8 @@ class Border extends Component {
     height: PropTypes.number,
     maxHeight: PropTypes.number,
     minHeight: PropTypes.number,
+    maxWidth: PropTypes.number,
+    minWidth: PropTypes.number,
     onUpdate: PropTypes.func,
     disabled: PropTypes.bool,
   };
@@ -32,10 +34,10 @@ class Border extends Component {
   resize(e) {
     const {
       allowHeight,
+      allowWidth,
       height,
       width,
       onUpdate,
-      allowWidth,
       maxHeight,
       maxWidth,
       minWidth,

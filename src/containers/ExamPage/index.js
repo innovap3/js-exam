@@ -97,7 +97,7 @@ class ExamPage extends Component {
     if (this.props.room.description) {
       await this.passwordSetting();
       window.addEventListener('keydown', e => {
-        if (e.ctrlKey && e.keyCode === 13) {
+        if (e.ctrlKey && e.key === 'Enter') {
           this.onRunCode();
         }
       });
