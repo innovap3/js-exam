@@ -91,7 +91,7 @@ class Border extends Component {
       this.style.paddingRight = `${this.borderSize}px`;
     }
     if (!disabled && this.allowHeight) {
-      finalClassName = `my_class_name ${finalClassName} ${styles.vertical}`;
+      finalClassName = `${finalClassName} ${styles.vertical}`;
       this.style.paddingBottom = `${this.borderSize}px`;
     }
     return (
