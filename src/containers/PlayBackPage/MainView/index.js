@@ -27,6 +27,7 @@ import playbackReducer from 'redux/playback/reducer';
 import { REDUCER_KEY } from 'redux/playback/constants';
 
 import HistorySlider from '../HistorySlider';
+import loopControl from '../../../utils/loopControl';
 
 const PlaybackView = args => {
   switch (args.categoryIndex) {
@@ -64,7 +65,7 @@ class Playback extends React.Component {
           ['stage-2', { decoratorsBeforeExport: true }],
           'react',
         ],
-        plugins: ['proposal-object-rest-spread'],
+        plugins: ['proposal-object-rest-spread', loopControl],
       });
       this.props.changeCode({ rawCode: newCode, compiledCode });
     } catch (e) {

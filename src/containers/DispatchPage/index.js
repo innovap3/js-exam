@@ -31,6 +31,7 @@ import JavaScriptPage from './JavaScriptPage';
 import ConceptPage from './ConceptPage';
 import SnapCommentBar from './SnapCommentBar';
 import { EXAM_USER_NAME, QUESTION_TYPE } from '../ExamPage/constants';
+import loopControl from '../../utils/loopControl';
 
 const MainView = args => {
   switch (args.categoryIndex) {
@@ -221,7 +222,7 @@ class Page extends Component {
           ['stage-2', { decoratorsBeforeExport: true }],
           'react',
         ],
-        plugins: ['proposal-object-rest-spread'],
+        plugins: ['proposal-object-rest-spread', loopControl],
       });
       this.setState({ code: newCode, compiledCode });
     } catch (e) {
