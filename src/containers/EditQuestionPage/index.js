@@ -18,6 +18,7 @@ import {
   fetchQuestion,
 } from '../../redux/question/actions';
 import { QUESTION_TYPE } from '../ExamPage/constants';
+import loopControl from '../../utils/loopControl';
 
 const getPageComponent = args => {
   switch (args.categoryIndex) {
@@ -188,7 +189,7 @@ class Page extends Component {
           ['stage-2', { decoratorsBeforeExport: true }],
           'react',
         ],
-        plugins: ['proposal-object-rest-spread'],
+        plugins: ['proposal-object-rest-spread', loopControl],
       });
       this.setState({ compiledCode });
     } catch (e) {

@@ -3,7 +3,7 @@ const loopControl = babel => {
   const t = babel.types;
   return {
     visitor: {
-      WhileStatement: path => {
+      Loop: path => {
         const variableName = path.scope.generateUidIdentifier('counter');
         const declaration = t.declareVariable(variableName);
         path.scope.parent.push(declaration);
@@ -33,7 +33,7 @@ const loopControl = babel => {
                 variableName,
                 t.NumericLiteral(MAX_LOOP_COUNT),
               ),
-              t.breakStatement(),
+              t.throwStatement(t.StringLiteral('infinite loop')),
               null,
             ),
           );
