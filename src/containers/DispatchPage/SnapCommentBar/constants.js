@@ -17,6 +17,6 @@ export const cannedMessages = [
   {
     key: 4,
     content: 'Give a hint!',
-    color: 'blue',
+    color: 'orange',
   },
 ];
