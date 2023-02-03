@@ -37,9 +37,10 @@ class SnapCommentBar extends PureComponent {
   );
 
   renderTags = () => {
-    const messages = cannedMessages.slice(0, 3);
+    const messages = cannedMessages.slice(0, 4);
     return messages.map(message => (
       <Tag
+        className={styles.pointer}
         key={message.content}
         color={message.color}
         onClick={this.handleClickTag(message.content)}
@@ -66,10 +67,7 @@ class SnapCommentBar extends PureComponent {
 
         <div className={styles.rightSide}>
           <div className={styles.tags}>{this.renderTags()}</div>
-          <form
-            className={styles.form}
-            onSubmit={handleSubmit(onCreateSnapComment)}
-          >
+          <form onSubmit={handleSubmit(onCreateSnapComment)}>
             <InputGroup compact style={{ display: 'flex' }}>
               <Dropdown
                 overlay={this.renderCannedMessagesMenu()}

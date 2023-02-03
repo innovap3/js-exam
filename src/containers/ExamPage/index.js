@@ -170,11 +170,12 @@ class ExamPage extends Component {
     }
   };
 
-  onReset = () => {
+  onReset = async () => {
     const { content } = this.props.record.ques;
     this.handleCodeChange(content);
-    this.props.actions.resetTape();
-    this.props.actions.resetConsole();
+    await this.props.actions.resetTape();
+    await this.props.actions.resetConsole();
+    this.onRunCode();
   };
 
   subscribeCreateRecord = () => {
